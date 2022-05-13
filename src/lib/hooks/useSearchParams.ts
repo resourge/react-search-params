@@ -1,9 +1,8 @@
 import { useCallback, useMemo, useRef } from 'react';
 
 import { SearchLocation } from '../types/types';
-import { createPath } from '../utils';
+import { createPath, parseParams, parseSearch } from '../utils';
 import { createLocation } from '../utils/createLocation';
-import { getParams, serializeParams } from '../utils/utils';
 
 import { useSearchLocation } from './useSearchLocation';
 
@@ -89,7 +88,7 @@ export const useSearchParams = <T extends Record<string, any>>(
 		: location.search;
 
 	// eslint-disable-next-line react-hooks/exhaustive-deps
-	const params = useMemo(() => getParams<T>(search, defaultParams ?? {} as unknown as T), [search]);
+	const params = useMemo(() => parseSearch<T>(search, defaultParams), [search]);
 
 	const stateRef = useRef<SearchParams<T>>({ params, search, location });
 
@@ -104,7 +103,7 @@ export const useSearchParams = <T extends Record<string, any>>(
 	onParamsChangeRef.current = navigate;
 
 	const onParams = useCallback((newParams: T) => {
-		const newSearch = serializeParams<T>(newParams);
+		const newSearch = parseParams<T>(newParams);
 
 		if ( stateRef.current.search !== newSearch ) {
 			const newLocation = createNewLocationWithSearch(

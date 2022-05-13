@@ -1,11 +1,20 @@
-import { useSearchParams } from './lib'
+import { createLocation, useSearchParams, createPath, parseParams, parseSearch } from './lib'
 
 function App() {
 	const [params, setParams] = useSearchParams(
 		({ location }) => window.history.replaceState(null, '', location.path)
 	)
-
 	console.log('params', params)
+
+	const searchLocation = createLocation('/products?productId=10#hash');
+	console.log('createPath', createPath(searchLocation));
+	console.log('createLocation', createLocation('/products?productId=10#hash'));
+	
+	console.log('parseParams', parseParams({
+		productId: 10,
+		productName: 'Apple'
+	}));
+	console.log('parseSearch', parseSearch('?productId=10&productName=Apple'));
 
 	return (
 		<div>

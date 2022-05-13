@@ -57,9 +57,10 @@ function _parseParams (
 
 /**
  * Convert params into a search string.
- * @param params
+ * @param paramValues
  * @returns {string}
  */
-export function parseParams<T extends Record<string, any>>(params: T): string {
-	return _parseParams(params).toString();
+export function parseParams<T extends Record<string, any>>(paramValues: T): string {
+	const params = _parseParams(paramValues).toString()
+	return `${params ? '?' : ''}${params}`
 }

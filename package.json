@@ -1,6 +1,7 @@
 {
   "name": "@resourge/react-search-params",
   "version": "0.0.0-development",
+  "description": "react-search-params is a simple hook to control current url search. Also provides so methods that extend URLSearchParams.",
   "main": "./dist/main.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -88,5 +89,10 @@
     "vite-plugin-checker": "^0.4.6",
     "vite-tsconfig-paths": "^3.4.1",
     "vitest": "^0.12.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

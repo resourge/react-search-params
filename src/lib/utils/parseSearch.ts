@@ -84,9 +84,13 @@ function createNestedObject (
 /**
  * Convert search string into an object.
  * @param search {string}
+ * @param defaultParams 
  * @returns {Record<string, any>}
  */
-export function parseSearch<T extends Record<string, any>>(search: string): T {
+export function parseSearch<T extends Record<string, any>>(
+	search: string, 
+	defaultParams: T = {} as unknown as T
+): T {
 	// eslint-disable-next-line @typescript-eslint/consistent-type-assertions
 	const result: T = {} as T;
 	const urlParams = new URLSearchParams(search);
@@ -115,5 +119,8 @@ export function parseSearch<T extends Record<string, any>>(search: string): T {
 		result[key as keyof T] = value;
 	}
 
-	return result;
+	return {
+		...defaultParams,
+		...result
+	}
 }
