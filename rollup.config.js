@@ -53,6 +53,12 @@ function capitalizeFirstLetter(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+function getName(name) {
+	const arr = name.split('/');
+
+	return arr[arr.length - 1];
+}
+
 /**
  * Package Json info
  */
@@ -66,7 +72,7 @@ const getPackage = (
 	PACKAGE_NAME
 ) => {
 	const SOURCE_INDEX_FILE = `${SOURCE_FOLDER}/index.ts`
-	const filename = PACKAGE_NAME;
+	const PROJECT_NAME = getName(PACKAGE_NAME);
 
 	/**
 	 * Folders
@@ -77,8 +83,8 @@ const getPackage = (
 	 * Options
 	 */
 	const sourcemap = true;
-	const banner = createBanner(PACKAGE_NAME, VERSION, AUTHOR_NAME, LICENSE);
-	const umdName = PACKAGE_NAME.split('-').map(capitalizeFirstLetter).join('')
+	const banner = createBanner(PROJECT_NAME, VERSION, AUTHOR_NAME, LICENSE);
+	const umdName = PROJECT_NAME.split('-').map(capitalizeFirstLetter).join('')
 
 	// JS modules for bundlers
 	const modules = [
@@ -124,7 +130,7 @@ const getPackage = (
 		{
 			input: SOURCE_INDEX_FILE,
 			output: {
-				file: `${CJS_DIR}/${filename}.development.js`,
+				file: `${CJS_DIR}/${PROJECT_NAME}.development.js`,
 				format: 'cjs',
 				sourcemap,
 				banner: banner
@@ -152,7 +158,7 @@ const getPackage = (
 		{
 			input: SOURCE_INDEX_FILE,
 			output: {
-				file: `${CJS_DIR}/${filename}.production.min.js`,
+				file: `${CJS_DIR}/${PROJECT_NAME}.production.min.js`,
 				format: 'cjs',
 				sourcemap,
 				banner: banner
@@ -191,7 +197,7 @@ const getPackage = (
 		{
 			input: SOURCE_INDEX_FILE,
 			output: {
-				file: `${UMD_DIR}/${filename}.development.js`,
+				file: `${UMD_DIR}/${PROJECT_NAME}.development.js`,
 				format: 'umd',
 				sourcemap,
 				banner: banner,
@@ -221,7 +227,7 @@ const getPackage = (
 		{
 			input: SOURCE_INDEX_FILE,
 			output: {
-				file: `${UMD_DIR}/${filename}.production.min.js`,
+				file: `${UMD_DIR}/${PROJECT_NAME}.production.min.js`,
 				format: 'umd',
 				sourcemap,
 				banner: banner,
@@ -263,8 +269,8 @@ const getPackage = (
 				...defaultExtPlugin,
 				replace({
 					preventAssignment: true,
-					devFile: `${UMD_DIR}/${filename}.development.js`.replace(OUTPUT_DIR, '.'),
-					prodFile: `${UMD_DIR}/${filename}.production.min.js`.replace(OUTPUT_DIR, '.')
+					devFile: `${UMD_DIR}/${PROJECT_NAME}.development.js`.replace(OUTPUT_DIR, '.'),
+					prodFile: `${UMD_DIR}/${PROJECT_NAME}.production.min.js`.replace(OUTPUT_DIR, '.')
 				})
 			]
 		}
