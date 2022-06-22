@@ -1,10 +1,10 @@
 # React-search-params
 
-`react-search-params` is a simple hook to control current url search. Also provides so methods that extend URLSearchParams.
+`react-search-params` is a simple hook to control current url. Also provides some methods that extend URLSearchParams.
 
 ## Features
 
-- Add's locationChange event.
+- Add's urlChange event.
 - Has no dependencies. 
 - It uses javascript URLSearchParams to parse search.
 - Decodes search params into primitive values. (ex: "?productId=10&productName=Apple" will become { product: 10, productName: "Apple" }).
@@ -31,8 +31,8 @@ npm install @resourge/react-search-params --save
 ```Typescript
 const [params, setParams] = useSearchParams(
   // Method to control navigation
-  ({ location }) => window.history.replaceState(null, '', location.path),
-  // Ex: react-router ({ location }) => history.replace(location.path),
+  ({ url }) => window.history.replaceState(null, '', url.href),
+  // Ex: react-router ({ url }) => history.replace(url.href),
   { }, // default params
   { } // config
 )
@@ -46,7 +46,7 @@ import { useSearchParams } from '@resourge/react-search-params';
 
 export default function Form() {
   const [params, setParams] = useSearchParams(
-    ({ location }) => window.history.replaceState(null, '', location.path)
+    ({ url }) => window.history.replaceState(null, '', url.href)
   )
 
   return (
@@ -66,32 +66,9 @@ export default function Form() {
 | ---- | ---- | -------- | ----------- |
 | **navigate** | `(config: SearchParams<T>) => void` | true | Method to navigate. |
 | **defaultParams** | `object` | false | To define default values |
-| **config** | `{ hash?: boolean }` | false | When hash is true it will use `Location hash` instead of `Location pathname` to get `search` |
+| **config** | `{ hash?: boolean }` | false | When hash is true it will use `URL hash` instead of `URL` to get `search` |
 
 ## Methods
-
-### createLocation
-
-Creates `SearchLocation` from a `path` or `Location`
-
-
-```jsx
-import { createLocation } from '@resourge/react-search-params';
-
-createLocation(location)
-
-createLocation('/products?productId=10#hash')
-```
-
-### createPath
-
-Creates path from `SearchLocation`
-
-```jsx
-import { createPath } from '@resourge/react-search-params';
-
-createPath(searchLocation)
-```
 
 ### parseParams
 

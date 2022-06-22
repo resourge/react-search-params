@@ -1,11 +1,10 @@
-import { createLocation } from './createLocation';
-import { createPath } from './createPath';
+import { createNewUrlWithSearch } from './createNewUrlWithSearch';
 import { parseParams } from './parseParams';
-import { parseSearch } from './parseSearch';
+import { parseSearch, parseSearchParams } from './parseSearch';
 
 export {
-	createLocation,
-	createPath,
+	parseSearchParams,
 	parseParams,
-	parseSearch
+	parseSearch,
+	createNewUrlWithSearch
 }

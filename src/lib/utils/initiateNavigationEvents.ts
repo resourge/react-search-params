@@ -1,7 +1,7 @@
 const popState = 'popstate'
 const pushState = 'pushState'
 const replaceState = 'replaceState'
-const eventName = 'locationChange' as const;
+const eventName = 'URLChange' as const;
 
 const EVENTS = {
 	[popState]: 'pop',
@@ -9,13 +9,13 @@ const EVENTS = {
 	[replaceState]: 'replace'
 } as const
 
-class LocationChangeEvent extends Event {
-	public location: Location;
+class UrlChangeEvent extends Event {
+	public url: URL;
 
 	constructor(public action: typeof EVENTS[keyof typeof EVENTS]) {
 		super(eventName);
 
-		this.location = window.location;
+		this.url = new URL(window.location.href);
 	}
 }
 
@@ -24,26 +24,26 @@ declare global {
 		resourge_history: string
 	}
 
-	export class LocationChangeEvent extends Event {
+	export class UrlChangeEvent extends Event {
 		public action: typeof EVENTS[keyof typeof EVENTS];
-		public location: Location;
+		public url: URL;
 	
 		constructor(action: typeof EVENTS[keyof typeof EVENTS])
 	}
 
 	function addEventListener<K extends keyof WindowEventMap>(type: K, listener: (this: Window, ev: WindowEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
 	function addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-	function addEventListener(type: typeof eventName, listener: (e: LocationChangeEvent) => void, options?: boolean | AddEventListenerOptions): void;
+	function addEventListener(type: typeof eventName, listener: (e: UrlChangeEvent) => void, options?: boolean | AddEventListenerOptions): void;
 
 	function removeEventListener<K extends keyof WindowEventMap>(type: K, listener: (this: Window, ev: WindowEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
 	function removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-	function removeEventListener(type: typeof eventName, listener: (e: LocationChangeEvent) => void, options?: boolean | EventListenerOptions): void;
+	function removeEventListener(type: typeof eventName, listener: (e: UrlChangeEvent) => void, options?: boolean | EventListenerOptions): void;
 }
 
 /**
- * Initiate some event's to catch {@link Location} changes.
+ * Initiate some event's to catch {@link URL} changes.
  */
-export const initiateLocationChange = () => {
+export const initiateNavigationEvents = () => {
 	/**
 	 * While History API does have `popstate` event, the only
 	 * proper way to listen to changes via `push/replaceState`
@@ -59,14 +59,14 @@ export const initiateLocationChange = () => {
 			window.history[type] = function (...args) {
 				const result = original.apply(this, args);
 
-				dispatchEvent(new LocationChangeEvent(EVENTS[type]));
+				dispatchEvent(new UrlChangeEvent(EVENTS[type]));
 
 				return result;
 			};
 		}
 
 		window.addEventListener(popState, () => {
-			dispatchEvent(new LocationChangeEvent(EVENTS[popState]));
+			dispatchEvent(new UrlChangeEvent(EVENTS[popState]));
 		})
 
 		Object.defineProperty(window, 'resourge_history', {

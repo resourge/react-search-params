@@ -1,71 +1,31 @@
-import { useCallback, useMemo, useRef } from 'react';
+import { useMemo } from 'react';
 
-import { SearchLocation } from '../types/types';
-import { createPath, parseParams, parseSearch } from '../utils';
-import { createLocation } from '../utils/createLocation';
+import { parseParams, parseSearchParams } from '../utils';
+import { createNewUrlWithSearch } from '../utils/createNewUrlWithSearch';
 
-import { useSearchLocation } from './useSearchLocation';
+import { useUrl } from './useUrl';
 
 export type SearchParams<T extends Record<string, any> = Record<string, any>> = {
 	/**
-	 * Current {@link SearchLocation} search
-	 */
-	search: string
-	/**
-	 * Current `{@link SearchLocation} params
+	 * Current {@link URL} params
 	 */
 	params: T
 	/**
-	 * Current `{@link SearchLocation} Location
+	 * Current {@link URL}
 	 */
-	location: SearchLocation
+	url: URL
 }
 
 export type SearchConfig = {
 	/**
-	 * Uses {@link SearchLocation#search} from `hash`
-	 * Create a {@link SearchLocation} from `hash`
+	 * Uses {@link URL#search} from `hash`
+	 * Create a {@link URL} from `hash`
 	 * then uses it search
 	 */
 	hash?: boolean 
 }
 
 export type SearchNavigate = <T extends Record<string, any> = Record<string, any>>(config: SearchParams<T>) => void
-
-/**
- * Create {@link SearchLocation} updating search with newSearch
- */
-export const createNewLocationWithSearch = (
-	location: SearchLocation, 
-	newSearch: string,
-	hash?: boolean
-): SearchLocation => {
-	if ( hash ) {
-		const hashLocation: SearchLocation | undefined = 
-			hash ? createLocation(
-				location.hash.substring(1, location.hash.length)
-			) : undefined;
-
-		if ( !hashLocation ) {
-			throw new Error('It was not possible to create a location from hash.')
-		}
-
-		const newLocation = createPath({
-			...hashLocation,
-			search: newSearch
-		})
-
-		return createLocation({
-			...location,
-			hash: location.hash.replace(hashLocation.path, newLocation)
-		})
-	}
-	
-	return createLocation({
-		...location,
-		search: newSearch
-	});
-}
 
 /**
  * Returns a {@link SearchParams}, and a method to update the params.
@@ -78,49 +38,44 @@ export const useSearchParams = <T extends Record<string, any>>(
 	defaultParams?: T,
 	config?: SearchConfig
 ): [SearchParams<T>, (newParams: T) => void] => {
-	const location = useSearchLocation();
+	const url = useUrl();
 
 	const hash = config?.hash;
-	const hashLocation: SearchLocation | undefined = hash ? createLocation(location.hash.substring(1, location.hash.length)) : undefined;
 
-	const search = hash 
-		? hashLocation?.search ?? ''
-		: location.search;
+	let search: string = url.search;
+	let searchParams: URLSearchParams = url.searchParams
 
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	const params = useMemo(() => parseSearch<T>(search, defaultParams), [search]);
+	if ( config?.hash ) {
+		const hashUrl: URL = new URL(url.hash.substring(1, url.hash.length), window.location.origin);
 
-	const stateRef = useRef<SearchParams<T>>({ params, search, location });
-
-	stateRef.current = {
-		params,
-		search,
-		location
+		search = hashUrl.search;
+		searchParams = hashUrl.searchParams;
 	}
 
-	const onParamsChangeRef = useRef(navigate);
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	const params = useMemo(() => parseSearchParams<T>(searchParams, defaultParams), [search]);
 
-	onParamsChangeRef.current = navigate;
+	const state: SearchParams<T> = {
+		params,
+		url
+	}
 
-	const onParams = useCallback((newParams: T) => {
+	const onParams = (newParams: T) => {
 		const newSearch = parseParams<T>(newParams);
 
-		if ( stateRef.current.search !== newSearch ) {
-			const newLocation = createNewLocationWithSearch(
-				location,
+		if ( state.url.search !== newSearch ) {
+			const newURL = createNewUrlWithSearch(
+				url,
 				newSearch,
 				hash
 			);
 
-			stateRef.current = {
-				location: newLocation,
-				search: newSearch,
+			navigate({
+				url: newURL,
 				params: newParams
-			}
-
-			onParamsChangeRef.current(stateRef.current)
+			})
 		}
-	}, [hash, location])
+	}
 
-	return [stateRef.current, onParams];
+	return [state, onParams];
 }
