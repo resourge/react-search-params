@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/resourge/react-search-params/compare/v1.1.0...v1.1.1) (2022-06-22)
+
+
+### Bug Fixes
+
+* **createnewurlwithsearch:** fix bug where param url changes was afeting original version ([61af132](https://github.com/resourge/react-search-params/commit/61af1326348b2cc2aff6cf0e99ca6a349b95c05f))
+
 # [1.1.0](https://github.com/resourge/react-search-params/compare/v1.0.1...v1.1.0) (2022-06-22)
 
 
