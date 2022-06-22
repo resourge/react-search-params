@@ -7,25 +7,29 @@ export const createNewUrlWithSearch = (
 	newSearch: string,
 	hash?: boolean
 ): URL => {
+	const _url = new URL(url);
+	
 	if ( hash ) {
 		const hashUrl: URL = new URL(
-			url.hash.substring(1, url.hash.length), 
+			_url.hash.substring(1, _url.hash.length), 
 			window.location.origin
 		);
 
 		const newPath = new URL(hashUrl)
 		newPath.search = newSearch;
-		
-		url.hash = url.hash ? url.hash
-		.replace(
-			hashUrl.href, 
-			newPath.href.replace(newPath.origin, '')
-		) : newPath.href.replace(newPath.origin, '');
 
-		return new URL(url)
+		_url.hash = _url.hash 
+			? _url.hash
+			.replace(
+				hashUrl.href, 
+				newPath.href.replace(newPath.origin, '')
+			) 
+			: newPath.href.replace(newPath.origin, '');
+
+		return _url
 	}
 
-	url.search = newSearch;
+	_url.search = newSearch;
 	
-	return new URL(url);
+	return _url;
 }

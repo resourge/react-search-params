@@ -46,7 +46,10 @@ export const useSearchParams = <T extends Record<string, any>>(
 	let searchParams: URLSearchParams = url.searchParams
 
 	if ( config?.hash ) {
-		const hashUrl: URL = new URL(url.hash.substring(1, url.hash.length), window.location.origin);
+		const hashUrl: URL = new URL(
+			url.hash.substring(1, url.hash.length), 
+			window.location.origin
+		);
 
 		search = hashUrl.search;
 		searchParams = hashUrl.searchParams;
