@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/resourge/react-search-params/compare/v1.0.1...v1.1.0) (2022-06-22)
+
+
+### Features
+
+* **react-search-params:** change from location to URL ([d34c4cb](https://github.com/resourge/react-search-params/commit/d34c4cb2e4a27f62b04388cd64a7380db861cc1d))
+
 ## [1.0.1](https://github.com/resourge/react-search-params/compare/v1.0.0...v1.0.1) (2022-05-16)
 
 
