@@ -1,6 +1,6 @@
 {
   "name": "@resourge/react-search-params",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "react-search-params is a simple hook to control current url search. Also provides so methods that extend URLSearchParams.",
   "main": "./dist/main.js",
   "module": "./dist/index.js",

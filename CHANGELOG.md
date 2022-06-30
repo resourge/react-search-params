@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/resourge/react-search-params/compare/v1.1.1...v1.1.2) (2022-06-30)
+
+
+### Bug Fixes
+
+* **useurl:** expose useurl ([2544f9b](https://github.com/resourge/react-search-params/commit/2544f9bae8812fc5b5e5d3d2d1320cdb98510e0e))
+
 ## [1.1.1](https://github.com/resourge/react-search-params/compare/v1.1.0...v1.1.1) (2022-06-22)
 
 
