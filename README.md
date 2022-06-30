@@ -68,6 +68,14 @@ export default function Form() {
 | **defaultParams** | `object` | false | To define default values |
 | **config** | `{ hash?: boolean }` | false | When hash is true it will use `URL hash` instead of `URL` to get `search` |
 
+## useUrl
+
+Returns the current URL object.
+
+```Typescript
+const url = useUrl();
+```
+
 ## Methods
 
 ### parseParams
