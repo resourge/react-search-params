@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/resourge/react-search-params/compare/v1.2.1...v1.2.2) (2022-07-01)
+
+
+### Bug Fixes
+
+* **types:** fix declare global type ([010416a](https://github.com/resourge/react-search-params/commit/010416a95b2e88e0a2960e12c106f5362e692594))
+
 ## [1.2.1](https://github.com/resourge/react-search-params/compare/v1.2.0...v1.2.1) (2022-07-01)
 
 
