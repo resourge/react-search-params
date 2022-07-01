@@ -17,8 +17,10 @@ export const useUrl = (): URL => {
 	const [url, setUrl] = useState<URL>(() => new URL(window.location.href))
 
 	useEffect(() => {
-		const checkForUpdates = ({ url }: UrlChangeEvent) => {
-			setUrl(url);
+		const checkForUpdates = (event: UrlChangeEvent) => {
+			const { url: newUrl } = event;
+
+			setUrl(newUrl);
 		};
 
 		addEventListener('URLChange', checkForUpdates)

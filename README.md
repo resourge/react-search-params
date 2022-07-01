@@ -4,7 +4,7 @@
 
 ## Features
 
-- Add's urlChange event.
+- Add's beforeURLChange and URLChange event to native javascript.
 - Has no dependencies. 
 - It uses javascript URLSearchParams to parse search.
 - Decodes search params into primitive values. (ex: "?productId=10&productName=Apple" will become { product: 10, productName: "Apple" }).

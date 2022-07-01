@@ -1,44 +1,5 @@
-const popState = 'popstate'
-const pushState = 'pushState'
-const replaceState = 'replaceState'
-const eventName = 'URLChange' as const;
-
-const EVENTS = {
-	[popState]: 'pop',
-	[pushState]: 'push',
-	[replaceState]: 'replace'
-} as const
-
-class UrlChangeEvent extends Event {
-	public url: URL;
-
-	constructor(public action: typeof EVENTS[keyof typeof EVENTS]) {
-		super(eventName);
-
-		this.url = new URL(window.location.href);
-	}
-}
-
-declare global {
-	interface Window { 
-		resourge_history: string
-	}
-
-	export class UrlChangeEvent extends Event {
-		public action: typeof EVENTS[keyof typeof EVENTS];
-		public url: URL;
-	
-		constructor(action: typeof EVENTS[keyof typeof EVENTS])
-	}
-
-	function addEventListener<K extends keyof WindowEventMap>(type: K, listener: (this: Window, ev: WindowEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-	function addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-	function addEventListener(type: typeof eventName, listener: (e: UrlChangeEvent) => void, options?: boolean | AddEventListenerOptions): void;
-
-	function removeEventListener<K extends keyof WindowEventMap>(type: K, listener: (this: Window, ev: WindowEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-	function removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-	function removeEventListener(type: typeof eventName, listener: (e: UrlChangeEvent) => void, options?: boolean | EventListenerOptions): void;
-}
+import { initiateBeforeURLChanges } from './initiateBeforeURLChanges';
+import { EVENTS, pushState, replaceState, UrlChangeEvent } from './navigationEvents/Events';
 
 /**
  * Initiate some event's to catch {@link URL} changes.
@@ -65,13 +26,11 @@ export const initiateNavigationEvents = () => {
 			};
 		}
 
-		window.addEventListener(popState, () => {
-			dispatchEvent(new UrlChangeEvent(EVENTS[popState]));
-		})
-
 		Object.defineProperty(window, 'resourge_history', {
 			value: 'resourge_history',
 			writable: false
 		})
+
+		initiateBeforeURLChanges();
 	}
 }
