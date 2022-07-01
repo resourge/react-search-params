@@ -47,13 +47,6 @@ declare global {
 		resourge_history: string
 	}
 
-	export class UrlChangeEvent extends Event {
-		public action: typeof EVENTS[keyof typeof EVENTS];
-		public url: URL;
-	
-		constructor(action: typeof EVENTS[keyof typeof EVENTS])
-	}
-	
 	function addEventListener(type: typeof eventBeforeUrlChange, listener: (e: BeforeUrlChangeEvent) => boolean | Promise<boolean>, options?: boolean | AddEventListenerOptions): void;
 	function addEventListener(type: typeof eventURLChange, listener: (e: UrlChangeEvent) => void, options?: boolean | AddEventListenerOptions): void;
 	

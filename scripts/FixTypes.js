@@ -6,6 +6,9 @@ const fixTypes = (typePath) => {
 
 	let content = fs.readFileSync(typesFilePath, 'utf-8');
 	
+	// Remove export form global
+	content = content.replace(/export declare global/g, 'declare global');
+	
 	// Change declare to export
 	content = content.replace(/declare/g, 'export declare');
 	

@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 
 import { initiateNavigationEvents } from '../utils/initiateNavigationEvents';
+import { UrlChangeEvent } from '../utils/navigationEvents/Events';
 
 // Checks if "resourge_history" was already initiated
 // This is to prevent "resourge_history" from being initiated multiple times
