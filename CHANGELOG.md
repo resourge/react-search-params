@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/resourge/react-search-params/compare/v1.2.0...v1.2.1) (2022-07-01)
+
+
+### Bug Fixes
+
+* **package:** fix globals ([f952dfa](https://github.com/resourge/react-search-params/commit/f952dfa60d70252bc3912e24c851609ed58a411d))
+
 # [1.2.0](https://github.com/resourge/react-search-params/compare/v1.1.2...v1.2.0) (2022-07-01)
 
 
