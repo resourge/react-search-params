@@ -6,9 +6,6 @@ const fixTypes = (typePath) => {
 
 	let content = fs.readFileSync(typesFilePath, 'utf-8');
 	
-	// Remove export form global
-	content = content.replace(/export declare global/g, 'declare global');
-	
 	// Change declare to export
 	content = content.replace(/declare/g, 'export declare');
 	
@@ -19,6 +16,9 @@ const fixTypes = (typePath) => {
 	// Remove last line break
 	const lastLine = content.lastIndexOf('\n');
 	content = content.substring(0, lastLine);
+	
+	// Remove export form global
+	content = content.replace(/export declare global/g, 'declare global');
 	
 	// Write File
 	fs.writeFileSync(typesFilePath, content);
