@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/resourge/react-search-params/compare/v1.1.2...v1.2.0) (2022-07-01)
+
+
+### Features
+
+* **useurl:** add beforeURLChange event ([a69da43](https://github.com/resourge/react-search-params/commit/a69da4357358e2b6c5c4db27566d3805f7f544cb))
+
 ## [1.1.2](https://github.com/resourge/react-search-params/compare/v1.1.1...v1.1.2) (2022-06-30)
 
 
