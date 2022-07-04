@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/resourge/react-search-params/compare/v1.2.2...v1.2.3) (2022-07-04)
+
+
+### Bug Fixes
+
+* **createnewurlwithsearch:** fix search on hash ([fc70b7b](https://github.com/resourge/react-search-params/commit/fc70b7bdfad6d31cc132ec0471ba12365818a918))
+
 ## [1.2.2](https://github.com/resourge/react-search-params/compare/v1.2.1...v1.2.2) (2022-07-01)
 
 
