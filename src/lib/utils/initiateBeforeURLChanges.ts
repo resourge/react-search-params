@@ -51,7 +51,11 @@ export const initiateBeforeURLChanges = () => {
 				}
 			);
 
-			if ( beforeEvents && beforeEvents.length && beforeEvents.some((cb) => !cb(event)) ) {
+			if ( 
+				beforeEvents && 
+				beforeEvents.length && 
+				beforeEvents.some((cb) => !cb(event)) 
+			) {
 				return;
 			}
 
