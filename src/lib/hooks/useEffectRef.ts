@@ -6,21 +6,20 @@ import { useEffect, useRef } from 'react';
  * take priority and the system doesn't recognize the change.
  */
 export const useEffectRef = (cb: () => () => void) => {
-	const isMounted = useRef(false);
-	const unmountRef = useRef(() => {});
+	const unmountRef = useRef<(() => void) | null>(null);
 
-	if ( !isMounted.current ) {
-		isMounted.current = true;
-
+	if ( !unmountRef.current ) {
 		const unmounted = cb();
 
 		unmountRef.current = () => {
 			unmounted()
-			unmountRef.current = () => {}
+			unmountRef.current = null
 		}
 	}
 
 	useEffect(() => {
-		return () => unmountRef.current()
+		return () => {
+			unmountRef.current && unmountRef.current()
+		}
 	}, [])
 }
