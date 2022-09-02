@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/resourge/react-search-params/compare/v1.2.3...v1.3.0) (2022-09-02)
+
+
+### Features
+
+* **useurl:** instead of adding event on useEffect, add event on render ([aa6eb4e](https://github.com/resourge/react-search-params/commit/aa6eb4ecca726709c19f10439b001cabe0ebc83c))
+
 ## [1.2.3](https://github.com/resourge/react-search-params/compare/v1.2.2...v1.2.3) (2022-07-04)
 
 
