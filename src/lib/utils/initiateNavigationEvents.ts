@@ -1,5 +1,10 @@
 import { initiateBeforeURLChanges } from './initiateBeforeURLChanges';
-import { EVENTS, pushState, replaceState, UrlChangeEvent } from './navigationEvents/Events';
+import {
+	EVENTS,
+	pushState,
+	replaceState,
+	UrlChangeEvent
+} from './navigationEvents/Events'
 
 /**
  * Initiate some event's to catch {@link URL} changes.

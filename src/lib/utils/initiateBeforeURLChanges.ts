@@ -1,8 +1,15 @@
-import { 
-	EVENTS, pushState, replaceState, 
-	UrlChangeEvent, BeforeUrlChangeEvent, go, 
-	back, forward, popState, eventBeforeUrlChange
-} from './navigationEvents/Events';
+import {
+	EVENTS,
+	pushState,
+	replaceState,
+	UrlChangeEvent,
+	BeforeUrlChangeEvent,
+	go,
+	back,
+	forward,
+	popState,
+	eventBeforeUrlChange
+} from './navigationEvents/Events'
 
 const getBeforeEvents = () => {
 	const beforeEvents: Array<(e: BeforeUrlChangeEvent) => boolean> = []

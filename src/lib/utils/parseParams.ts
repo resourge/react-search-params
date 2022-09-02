@@ -61,6 +61,7 @@ function _parseParams (
  * @returns {string}
  */
 export function parseParams<T extends Record<string, any>>(paramValues: T): string {
-	const params = _parseParams(paramValues).toString()
+	const params = _parseParams(paramValues)
+	.toString()
 	return `${params ? '?' : ''}${params}`
 }

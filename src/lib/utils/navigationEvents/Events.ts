@@ -36,7 +36,12 @@ export class BeforeUrlChangeEvent extends Event {
 		public action: typeof EVENTS[keyof typeof EVENTS],
 		public next: () => void
 	) {
-		super(eventURLChange, { cancelable: true });
+		super(
+			eventURLChange, 
+			{
+				cancelable: true 
+			}
+		);
 
 		this.url = new URL(window.location.href);
 	}
