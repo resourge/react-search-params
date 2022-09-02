@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/resourge/react-search-params/compare/v1.3.0...v1.3.1) (2022-09-02)
+
+
+### Bug Fixes
+
+* **useeffectref:** fix not removing unmountRef on useEffect unmount ([cb659a5](https://github.com/resourge/react-search-params/commit/cb659a580857845f315024078b62e2502d936948))
+
 # [1.3.0](https://github.com/resourge/react-search-params/compare/v1.2.3...v1.3.0) (2022-09-02)
 
 
