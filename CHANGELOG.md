@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/resourge/react-search-params/compare/v1.3.1...v1.3.2) (2022-09-07)
+
+
+### Bug Fixes
+
+* **useurl:** fix bug on addEventListener ([0b72c3c](https://github.com/resourge/react-search-params/commit/0b72c3c662312a6233368ee0595af4a8d74be826))
+
 ## [1.3.1](https://github.com/resourge/react-search-params/compare/v1.3.0...v1.3.1) (2022-09-02)
 
 
