@@ -17,6 +17,17 @@ export const EVENTS = {
 	[forward]: forward
 } as const
 
+// eslint-disable-next-line prefer-const
+let _lastURLChangeEvent: UrlChangeEvent | null = null;
+
+export const setLastURLChangeEvent = (lastURLChangeEvent: UrlChangeEvent | null) => {
+	_lastURLChangeEvent = lastURLChangeEvent;
+}
+
+export const getLastURLChangeEvent = () => {
+	return _lastURLChangeEvent
+}
+
 export class UrlChangeEvent extends Event {
 	public url: URL;
 

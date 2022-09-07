@@ -50,6 +50,14 @@ module.exports = {
 		}
 	],
 	rules: {
+		'@typescript-eslint/no-misused-promises': [
+			'error',
+			{
+				checksVoidReturn: {
+					attributes: false
+				}
+			}
+		],
 		'@typescript-eslint/ban-ts-comment': [
 			'error',
 			{

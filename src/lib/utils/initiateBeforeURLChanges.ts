@@ -8,7 +8,10 @@ import {
 	back,
 	forward,
 	popState,
-	eventBeforeUrlChange
+	eventBeforeUrlChange,
+	eventURLChange,
+	setLastURLChangeEvent,
+	getLastURLChangeEvent
 } from './navigationEvents/Events'
 
 const getBeforeEvents = () => {
@@ -19,6 +22,10 @@ const getBeforeEvents = () => {
 		if ( args[0] === eventBeforeUrlChange ) {
 			beforeEvents.push(args[1])
 		} 
+		if (args[0] === eventURLChange && getLastURLChangeEvent()) {
+			args[1](getLastURLChangeEvent());
+			setLastURLChangeEvent(null);
+		}
 			
 		return originalAddEventListener.apply(this, args as any);
 	};
@@ -31,6 +38,9 @@ const getBeforeEvents = () => {
 				beforeEvents.splice(eventIndex, 1)
 			}
 		} 
+		if (args[0] === eventURLChange && !getLastURLChangeEvent()) {
+			setLastURLChangeEvent(null);
+		}
 			
 		return originalRemoveEventListener.apply(this, args as any);
 	};
@@ -84,7 +94,9 @@ export const initiateBeforeURLChanges = () => {
 			return;
 		}
 
-		dispatchEvent(new UrlChangeEvent(EVENTS[popState]));
+		const urlChangeEvent = new UrlChangeEvent(EVENTS[popState]);
+		setLastURLChangeEvent(urlChangeEvent);
+		dispatchEvent(urlChangeEvent);
 	}, false)
 
 	window.addEventListener('beforeunload', (e) => {

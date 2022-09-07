@@ -3,6 +3,7 @@ import {
 	EVENTS,
 	pushState,
 	replaceState,
+	setLastURLChangeEvent,
 	UrlChangeEvent
 } from './navigationEvents/Events'
 
@@ -25,7 +26,9 @@ export const initiateNavigationEvents = () => {
 			window.history[type] = function (...args) {
 				const result = original.apply(this, args);
 
-				dispatchEvent(new UrlChangeEvent(EVENTS[type]));
+				const event = new UrlChangeEvent(EVENTS[type]);
+				setLastURLChangeEvent(event);
+				dispatchEvent(event);
 
 				return result;
 			};
