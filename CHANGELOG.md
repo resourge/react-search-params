@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/resourge/react-search-params/compare/v1.3.2...v1.4.0) (2022-09-22)
+
+
+### Features
+
+* **package:** update packages and add chrome > 78 ([46ec9f8](https://github.com/resourge/react-search-params/commit/46ec9f88a4e5974e8ad17bd07c5514093c4e3d0c))
+
 ## [1.3.2](https://github.com/resourge/react-search-params/compare/v1.3.1...v1.3.2) (2022-09-07)
 
 
