@@ -109,9 +109,7 @@ const getPackage = (
 						['@babel/preset-react', {
 							useBuiltIns: true
 						}],
-						['@babel/preset-typescript', {
-							optimizeConstEnums: true
-						}]
+						'@babel/preset-typescript'
 					],
 					plugins: babelPlugins,
 					extensions: ['.ts', '.tsx']
@@ -151,9 +149,7 @@ const getPackage = (
 						['@babel/preset-react', {
 							useBuiltIns: true
 						}],
-						['@babel/preset-typescript', {
-							optimizeConstEnums: true
-						}],
+						'@babel/preset-typescript',
 						babelPresetEnv
 					],
 					plugins: babelPlugins,
@@ -184,9 +180,7 @@ const getPackage = (
 						['@babel/preset-react', {
 							useBuiltIns: true
 						}],
-						['@babel/preset-typescript', {
-							optimizeConstEnums: true
-						}]
+						'@babel/preset-typescript'
 					],
 					plugins: babelPlugins,
 					extensions: ['.ts', '.tsx']
@@ -226,9 +220,7 @@ const getPackage = (
 						['@babel/preset-react', {
 							useBuiltIns: true
 						}],
-						['@babel/preset-typescript', {
-							optimizeConstEnums: true
-						}]
+						'@babel/preset-typescript'
 					],
 					plugins: babelPlugins,
 					extensions: ['.ts', '.tsx']
@@ -260,9 +252,7 @@ const getPackage = (
 						['@babel/preset-react', {
 							useBuiltIns: true
 						}],
-						['@babel/preset-typescript', {
-							optimizeConstEnums: true
-						}]
+						'@babel/preset-typescript'
 					],
 					plugins: babelPlugins,
 					extensions: ['.ts', '.tsx']
