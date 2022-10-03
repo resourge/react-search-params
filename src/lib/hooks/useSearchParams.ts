@@ -38,7 +38,7 @@ export const useSearchParams = <T extends Record<string, any>>(
 	defaultParams?: T,
 	config?: SearchConfig
 ): [SearchParams<T>, (newParams: T) => void] => {
-	const url = useUrl();
+	const [url] = useUrl();
 
 	const hash = config?.hash;
 

@@ -14,8 +14,11 @@ export const EVENTS = {
 	[replaceState]: 'replace',
 	[go]: go,
 	[back]: back,
-	[forward]: forward
+	[forward]: forward,
+	initial: 'initial'
 } as const
+
+export type ActionType = typeof EVENTS[keyof typeof EVENTS]
 
 // eslint-disable-next-line prefer-const
 let _lastURLChangeEvent: UrlChangeEvent | null = null;
@@ -32,7 +35,7 @@ export class UrlChangeEvent extends Event {
 	public url: URL;
 
 	constructor(
-		public action: typeof EVENTS[keyof typeof EVENTS]
+		public action: ActionType
 	) {
 		super(eventURLChange);
 
@@ -44,7 +47,7 @@ export class BeforeUrlChangeEvent extends Event {
 	public url: URL;
 
 	constructor(
-		public action: typeof EVENTS[keyof typeof EVENTS],
+		public action: ActionType,
 		public next: () => void
 	) {
 		super(
