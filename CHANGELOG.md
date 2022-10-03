@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/resourge/react-search-params/compare/v1.4.0...v1.5.0) (2022-10-03)
+
+
+### Features
+
+* **useurl:** add action to useUrl ([255f024](https://github.com/resourge/react-search-params/commit/255f024246cb560cf98b58f7d3b6f8f416cbe98c))
+
 # [1.4.0](https://github.com/resourge/react-search-params/compare/v1.3.2...v1.4.0) (2022-09-22)
 
 
