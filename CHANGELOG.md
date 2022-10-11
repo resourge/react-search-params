@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/resourge/react-search-params/compare/v1.5.0...v1.6.0) (2022-10-11)
+
+
+### Features
+
+* **useurl:** change useUrl from useState to useSyncExternalStore to better match multiple useUrl ([f9e2c7b](https://github.com/resourge/react-search-params/commit/f9e2c7b9cac2d18049d7a2a848de7a2fb5a01b30))
+
 # [1.5.0](https://github.com/resourge/react-search-params/compare/v1.4.0...v1.5.0) (2022-10-03)
 
 
