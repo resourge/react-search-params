@@ -7,7 +7,7 @@ import { terser } from 'rollup-plugin-terser';
 
 import { name, author, license } from './package.json'
 
-const external = ['react'];
+const external = ['react', 'use-sync-external-store/shim'];
 const globals = {
 	react: 'React' 
 }

@@ -59,6 +59,7 @@
     "@testing-library/user-event": "^14.4.3",
     "@types/react": "^18.0.20",
     "@types/react-dom": "^18.0.6",
+    "@types/use-sync-external-store": "^0.0.3",
     "@typescript-eslint/eslint-plugin": "^5.38.0",
     "@vitejs/plugin-react": "^2.1.0",
     "babel-plugin-dev-expression": "^0.2.3",
@@ -92,5 +93,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "use-sync-external-store": "^1.2.0"
   }
 }

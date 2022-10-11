@@ -1,8 +1,11 @@
 /* eslint-disable no-restricted-globals */
-import { useEffect, useState } from 'react';
+import { useCallback } from 'react';
 
+import { useSyncExternalStore } from 'use-sync-external-store/shim';
+
+import NotificationStore from '../store/NotificationStore';
 import { initiateNavigationEvents } from '../utils/initiateNavigationEvents';
-import { ActionType, EVENTS, UrlChangeEvent } from '../utils/navigationEvents/Events'
+import { ActionType } from '../utils/navigationEvents/Events'
 
 // Checks if "resourge_history" was already initiated
 // This is to prevent "resourge_history" from being initiated multiple times
@@ -15,25 +18,9 @@ if ( !window.resourge_history ) {
  * @returns {URL}, {@link EventType}
  */
 export const useUrl = (): [url: URL, action: ActionType] => {
-	const [{ url, action }, setUrl] = useState<{ action: ActionType, url: URL }>(() => ({
-		url: new URL(window.location.href),
-		action: EVENTS.initial
-	}))
-
-	useEffect(() => {
-		const checkForUpdates = (event: UrlChangeEvent) => {
-			const { url, action } = event;
-
-			setUrl({
-				url,
-				action 
-			});
-		};
-
-		addEventListener('URLChange', checkForUpdates)
-
-		return () => removeEventListener('URLChange', checkForUpdates)
-	}, [])
-
-	return [url, action];
+	return useSyncExternalStore(
+		useCallback((notification) => NotificationStore.subscribe(notification), []),
+		() => NotificationStore.getValue(),
+		() => NotificationStore.getValue()
+	);
 }
