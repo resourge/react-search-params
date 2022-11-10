@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-globals */
-import { useCallback } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 import { useSyncExternalStore } from 'use-sync-external-store/shim';
 
@@ -18,8 +18,18 @@ if ( !window.resourge_history ) {
  * @returns {URL}, {@link EventType}
  */
 export const useUrl = (): [url: URL, action: ActionType] => {
+	// This is because URLChange trigger before useSyncExternalStore `unsubscribe`
+	const unsubscribeRef = useRef(() => {})
+	useEffect(() => {
+		return () => {
+			unsubscribeRef.current()
+		}
+	})
 	return useSyncExternalStore(
-		useCallback((notification) => NotificationStore.subscribe(notification), []),
+		useCallback((notification) => {
+			unsubscribeRef.current = NotificationStore.subscribe(notification);
+			return () => {}
+		}, []),
 		() => NotificationStore.getValue(),
 		() => NotificationStore.getValue()
 	);
