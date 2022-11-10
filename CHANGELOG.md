@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/resourge/react-search-params/compare/v1.6.0...v1.6.1) (2022-11-10)
+
+
+### Bug Fixes
+
+* **useurl:** fix useSyncExternalStore unsubscribe calling after URLChange ([4dba4d5](https://github.com/resourge/react-search-params/commit/4dba4d55747bd51516d32ee768cdf3730b69986d))
+
 # [1.6.0](https://github.com/resourge/react-search-params/compare/v1.5.0...v1.6.0) (2022-10-11)
 
 
