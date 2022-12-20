@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/resourge/react-search-params/compare/v1.6.1...v1.6.2) (2022-12-20)
+
+
+### Bug Fixes
+
+* **useurl:** fix unsubscribeRef ([0f82ef9](https://github.com/resourge/react-search-params/commit/0f82ef95782c34b4f092dd9bbbadf26530f819ff))
+
 ## [1.6.1](https://github.com/resourge/react-search-params/compare/v1.6.0...v1.6.1) (2022-11-10)
 
 
