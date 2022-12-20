@@ -24,7 +24,7 @@ export const useUrl = (): [url: URL, action: ActionType] => {
 		return () => {
 			unsubscribeRef.current()
 		}
-	})
+	}, [])
 	return useSyncExternalStore(
 		useCallback((notification) => {
 			unsubscribeRef.current = NotificationStore.subscribe(notification);
