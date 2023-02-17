@@ -6,6 +6,6 @@ export {
 	useSearchParams,
 	useUrl,
 
-	SearchConfig,
-	SearchParams
+	type SearchConfig,
+	type SearchParams
 }

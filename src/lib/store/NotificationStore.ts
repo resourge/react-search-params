@@ -1,5 +1,5 @@
-import { UrlChangeEvent } from '../utils';
-import { ActionType, EVENTS } from '../utils/navigationEvents/Events';
+import { type UrlChangeEvent } from '../utils';
+import { type ActionType, EVENTS } from '../utils/navigationEvents/Events';
 
 export type StoreValue = { 
 	action: ActionType
@@ -23,7 +23,9 @@ class NotificationStore {
 					action 
 				];
 
-				this.notification.forEach((method) => method())
+				this.notification.forEach((method) => {
+					method(); 
+				})
 			}
 		})
 	}
@@ -41,4 +43,5 @@ class NotificationStore {
 	}
 }
  
+// eslint-disable-next-line import/no-anonymous-default-export
 export default new NotificationStore();

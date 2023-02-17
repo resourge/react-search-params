@@ -1,7 +1,5 @@
-import { initiateBeforeURLChanges } from './initiateBeforeURLChanges';
+import { getAction, initiateBeforeURLChanges } from './initiateBeforeURLChanges';
 import {
-	EVENTS,
-	EVENTS_KEYS,
 	pushState,
 	replaceState,
 	setLastURLChangeEvent,
@@ -25,17 +23,10 @@ export const initiateNavigationEvents = () => {
 			const original = window.history[type];
 		
 			window.history[type] = function (...args) {
+				// eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
 				const result = original.apply(this, args);
 
-				let action = EVENTS[type];
-				const state = args[0];
-
-				if ( state && typeof state === 'object' ) {
-					const { action: _action } = state;
-					if ( EVENTS_KEYS.includes(_action) ) {
-						action = _action
-					}
-				}
+				const action = getAction(args[0], type);
 
 				const event = new UrlChangeEvent(action);
 				setLastURLChangeEvent(event);

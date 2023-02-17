@@ -11,8 +11,25 @@ import {
 	eventBeforeUrlChange,
 	eventURLChange,
 	setLastURLChangeEvent,
-	getLastURLChangeEvent
+	getLastURLChangeEvent,
+	EVENTS_KEYS
 } from './navigationEvents/Events'
+
+/**
+ * Checks is data from '(push/replace)State' has action key
+ */
+export const getAction = (state: any, type: keyof typeof EVENTS) => {
+	let action = EVENTS[type];
+
+	if ( state && typeof state === 'object' ) {
+		const { action: _action } = state;
+		if ( EVENTS_KEYS.includes(_action) ) {
+			action = _action
+		}
+	}
+
+	return action;
+}
 
 const getBeforeEvents = () => {
 	const beforeEvents: Array<(e: BeforeUrlChangeEvent) => boolean> = []
@@ -27,7 +44,7 @@ const getBeforeEvents = () => {
 			setLastURLChangeEvent(null);
 		}
 			
-		return originalAddEventListener.apply(this, args as any);
+		originalAddEventListener.apply(this, args as any);
 	};
 
 	const originalRemoveEventListener = window.removeEventListener;
@@ -42,7 +59,7 @@ const getBeforeEvents = () => {
 			setLastURLChangeEvent(null);
 		}
 			
-		return originalRemoveEventListener.apply(this, args as any);
+		originalRemoveEventListener.apply(this, args as any);
 	};
 
 	return beforeEvents;
@@ -61,8 +78,10 @@ export const initiateBeforeURLChanges = () => {
 		const original = window.history[type];
 		
 		window.history[type] = function (...args) {
+			const action = getAction(args[0], type);
+
 			const event = new BeforeUrlChangeEvent(
-				EVENTS[type],
+				action,
 				() => {
 					original.apply(this, args);
 				}
@@ -76,7 +95,7 @@ export const initiateBeforeURLChanges = () => {
 				return;
 			}
 
-			return original.apply(this, args);
+			original.apply(this, args);
 		};
 		originalHistory[type] = original.bind(window.history)
 	}

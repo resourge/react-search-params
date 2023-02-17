@@ -5,7 +5,7 @@ import { useSyncExternalStore } from 'use-sync-external-store/shim';
 
 import NotificationStore from '../store/NotificationStore';
 import { initiateNavigationEvents } from '../utils/initiateNavigationEvents';
-import { ActionType } from '../utils/navigationEvents/Events'
+import { type ActionType } from '../utils/navigationEvents/Events'
 
 // Checks if "resourge_history" was already initiated
 // This is to prevent "resourge_history" from being initiated multiple times
