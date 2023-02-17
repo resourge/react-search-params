@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/resourge/react-search-params/compare/v1.6.2...v1.7.0) (2023-02-17)
+
+
+### Features
+
+* **initiatenavigationevents:** sending action in data on push/replaceState will change action ([0823a1a](https://github.com/resourge/react-search-params/commit/0823a1a194bb6bf366515848aa4e518e0f3f4178))
+
 ## [1.6.2](https://github.com/resourge/react-search-params/compare/v1.6.1...v1.6.2) (2022-12-20)
 
 
