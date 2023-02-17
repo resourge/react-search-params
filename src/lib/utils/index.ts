@@ -1,5 +1,5 @@
 import { createNewUrlWithSearch } from './createNewUrlWithSearch';
-import { BeforeUrlChangeEvent, UrlChangeEvent } from './navigationEvents/Events';
+import { BeforeUrlChangeEvent, UrlChangeEvent, ActionType } from './navigationEvents/Events';
 import { parseParams } from './parseParams';
 import { parseSearch, parseSearchParams } from './parseSearch';
 
@@ -9,5 +9,5 @@ export {
 	parseSearch,
 	createNewUrlWithSearch,
 
-	BeforeUrlChangeEvent, UrlChangeEvent
+	BeforeUrlChangeEvent, UrlChangeEvent, ActionType
 }

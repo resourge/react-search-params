@@ -18,6 +18,8 @@ export const EVENTS = {
 	initial: 'initial'
 } as const
 
+export const EVENTS_KEYS = Object.keys(EVENTS)
+
 export type ActionType = typeof EVENTS[keyof typeof EVENTS]
 
 // eslint-disable-next-line prefer-const
