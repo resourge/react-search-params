@@ -12,7 +12,8 @@ import {
 	eventURLChange,
 	setLastURLChangeEvent,
 	getLastURLChangeEvent,
-	EVENTS_KEYS
+	EVENTS_KEYS,
+	beforeunload
 } from './navigationEvents/Events'
 
 /**
@@ -118,9 +119,9 @@ export const initiateBeforeURLChanges = () => {
 		dispatchEvent(urlChangeEvent);
 	}, false)
 
-	window.addEventListener('beforeunload', (e) => {
+	window.addEventListener(beforeunload, (e) => {
 		const event = new BeforeUrlChangeEvent(
-			EVENTS[popState],
+			EVENTS[beforeunload],
 			() => {
 				originalHistory.back();
 			}

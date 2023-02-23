@@ -4,6 +4,7 @@ export const replaceState = 'replaceState'
 export const go = 'go'
 export const back = 'back'
 export const forward = 'forward'
+export const beforeunload = 'beforeunload'
 
 export const eventURLChange = 'URLChange' as const;
 export const eventBeforeUrlChange = 'beforeURLChange' as const;
@@ -15,7 +16,8 @@ export const EVENTS = {
 	[go]: go,
 	[back]: back,
 	[forward]: forward,
-	initial: 'initial'
+	initial: 'initial',
+	[beforeunload]: 'beforeunload'
 } as const
 
 export const EVENTS_KEYS = Object.keys(EVENTS)
