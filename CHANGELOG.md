@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/resourge/react-search-params/compare/v1.7.0...v1.8.0) (2023-02-23)
+
+
+### Features
+
+* **initiatebeforeurlchanges:** add event beforeunload ([345d0dd](https://github.com/resourge/react-search-params/commit/345d0dd9cdda32e6ec64a2e98de4baee0420b7de))
+
 # [1.7.0](https://github.com/resourge/react-search-params/compare/v1.6.2...v1.7.0) (2023-02-17)
 
 
