@@ -48,10 +48,9 @@ export class UrlChangeEvent extends Event {
 }
 
 export class BeforeUrlChangeEvent extends Event {
-	public url: URL;
-
 	constructor(
 		public action: ActionType,
+		public url: URL,
 		public next: () => void
 	) {
 		super(
@@ -60,8 +59,6 @@ export class BeforeUrlChangeEvent extends Event {
 				cancelable: true 
 			}
 		);
-
-		this.url = new URL(window.location.href);
 	}
 }
 

@@ -80,9 +80,11 @@ export const initiateBeforeURLChanges = () => {
 		
 		window.history[type] = function (...args) {
 			const action = getAction(args[0], type);
+			const url = (typeof args[2] === 'string' ? new URL(args[2], window.location.origin) : args[2]) ?? new URL(window.location.href)
 
 			const event = new BeforeUrlChangeEvent(
 				action,
+				url,
 				() => {
 					original.apply(this, args);
 				}
@@ -104,6 +106,7 @@ export const initiateBeforeURLChanges = () => {
 	window.addEventListener(popState, () => {
 		const event = new BeforeUrlChangeEvent(
 			EVENTS[popState],
+			new URL(document.location.href),
 			() => {
 				originalHistory.back();
 			}
@@ -122,6 +125,7 @@ export const initiateBeforeURLChanges = () => {
 	window.addEventListener(beforeunload, (e) => {
 		const event = new BeforeUrlChangeEvent(
 			EVENTS[beforeunload],
+			new URL(window.location.href),
 			() => {
 				originalHistory.back();
 			}
