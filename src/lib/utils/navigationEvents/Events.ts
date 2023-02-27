@@ -54,7 +54,7 @@ export class BeforeUrlChangeEvent extends Event {
 		public next: () => void
 	) {
 		super(
-			eventURLChange, 
+			eventBeforeUrlChange, 
 			{
 				cancelable: true 
 			}
