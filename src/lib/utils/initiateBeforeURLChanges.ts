@@ -59,6 +59,8 @@ const getBeforeEvents = () => {
 		if (args[0] === eventURLChange && !getLastURLChangeEvent()) {
 			setLastURLChangeEvent(null);
 		}
+
+		console.log('beforeEvents', [...beforeEvents])
 			
 		originalRemoveEventListener.apply(this, args as any);
 	};
@@ -120,7 +122,9 @@ export const initiateBeforeURLChanges = () => {
 		const urlChangeEvent = new UrlChangeEvent(EVENTS[popState]);
 		setLastURLChangeEvent(urlChangeEvent);
 		dispatchEvent(urlChangeEvent);
-	}, false)
+	}, {
+		once: true 
+	})
 
 	window.addEventListener(beforeunload, (e) => {
 		const event = new BeforeUrlChangeEvent(
