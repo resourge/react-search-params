@@ -28,7 +28,16 @@ export const initiateNavigationEvents = () => {
 
 				const action = getAction(args[0], type);
 
-				const event = new UrlChangeEvent(action);
+				const urlArg = args[2];
+
+				const url = urlArg 
+					? (
+						typeof args[2] === 'string' 
+							? new URL(args[2], window.location.origin) 
+							: args[2]
+					) : new URL(window.location.href)
+				
+				const event = new UrlChangeEvent(action, url);
 				setLastURLChangeEvent(event);
 				dispatchEvent(event);
 

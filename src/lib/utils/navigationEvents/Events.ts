@@ -36,14 +36,11 @@ export const getLastURLChangeEvent = () => {
 }
 
 export class UrlChangeEvent extends Event {
-	public url: URL;
-
 	constructor(
-		public action: ActionType
+		public action: ActionType,
+		public url: URL
 	) {
 		super(eventURLChange);
-
-		this.url = new URL(window.location.href);
 	}
 }
 

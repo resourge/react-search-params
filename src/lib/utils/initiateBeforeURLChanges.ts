@@ -80,7 +80,15 @@ export const initiateBeforeURLChanges = () => {
 		
 		window.history[type] = function (...args) {
 			const action = getAction(args[0], type);
-			const url = (typeof args[2] === 'string' ? new URL(args[2], window.location.origin) : args[2]) ?? new URL(window.location.href)
+
+			const urlArg = args[2];
+
+			const url = urlArg 
+				? (
+					typeof urlArg === 'string' 
+						? new URL(urlArg, window.location.origin) 
+						: urlArg
+				) : new URL(window.location.href)
 
 			const event = new BeforeUrlChangeEvent(
 				action,
@@ -109,9 +117,12 @@ export const initiateBeforeURLChanges = () => {
 			preventDoublePopState = false;
 			return;
 		}
+
+		const url = new URL(document.location.href);
+
 		const event = new BeforeUrlChangeEvent(
 			EVENTS[popState],
-			new URL(document.location.href),
+			url,
 			() => {
 				originalHistory.back();
 			}
@@ -123,7 +134,7 @@ export const initiateBeforeURLChanges = () => {
 			return;
 		}
 
-		const urlChangeEvent = new UrlChangeEvent(EVENTS[popState]);
+		const urlChangeEvent = new UrlChangeEvent(EVENTS[popState], url);
 		setLastURLChangeEvent(urlChangeEvent);
 		dispatchEvent(urlChangeEvent);
 	};
