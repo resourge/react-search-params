@@ -32,9 +32,9 @@ export const initiateNavigationEvents = () => {
 
 				const url = urlArg 
 					? (
-						typeof args[2] === 'string' 
-							? new URL(args[2], window.location.origin) 
-							: args[2]
+						typeof urlArg === 'string' 
+							? new URL(urlArg, window.location.origin) 
+							: urlArg
 					) : new URL(window.location.href)
 				
 				const event = new UrlChangeEvent(action, url);
