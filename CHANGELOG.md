@@ -1,3 +1,13 @@
+## [1.8.1](https://github.com/resourge/react-search-params/compare/v1.8.0...v1.8.1) (2023-02-28)
+
+
+### Bug Fixes
+
+* **beforeurlchangeevent:** change beforeurlchangeevent to receive true nextUrl ([1f57896](https://github.com/resourge/react-search-params/commit/1f57896ca5f01bd459606f2593760348fed05bcf))
+* **beforeurlchangeevent:** fix BeforeUrlChangeEvent ([6487981](https://github.com/resourge/react-search-params/commit/64879814a64b24051c04ba497cb7defa3383ed67))
+* **initiatebeforeurlchanges:** fix double popstate when going back ([21bf6d0](https://github.com/resourge/react-search-params/commit/21bf6d0cec16984e958ad3b48ec052c41f4e2a19))
+* **initiatebeforeurlchanges:** make so popState will only trigger once ([4a515fb](https://github.com/resourge/react-search-params/commit/4a515fba722366498b12141640935ea2927f4513))
+
 # [1.8.0](https://github.com/resourge/react-search-params/compare/v1.7.0...v1.8.0) (2023-02-23)
 
 
