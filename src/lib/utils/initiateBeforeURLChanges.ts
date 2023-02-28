@@ -59,8 +59,6 @@ const getBeforeEvents = () => {
 		if (args[0] === eventURLChange && !getLastURLChangeEvent()) {
 			setLastURLChangeEvent(null);
 		}
-
-		console.log('beforeEvents', [...beforeEvents])
 			
 		originalRemoveEventListener.apply(this, args as any);
 	};
@@ -105,7 +103,12 @@ export const initiateBeforeURLChanges = () => {
 		originalHistory[type] = original.bind(window.history)
 	}
 
-	window.addEventListener(popState, () => {
+	let preventDoublePopState = false;
+	const popStateCb = () => {
+		if ( preventDoublePopState ) {
+			preventDoublePopState = false;
+			return;
+		}
 		const event = new BeforeUrlChangeEvent(
 			EVENTS[popState],
 			new URL(document.location.href),
@@ -115,6 +118,7 @@ export const initiateBeforeURLChanges = () => {
 		);
 
 		if ( beforeEvents && beforeEvents.length && beforeEvents.some((cb) => !cb(event)) ) {
+			preventDoublePopState = true;
 			originalHistory.forward();
 			return;
 		}
@@ -122,9 +126,8 @@ export const initiateBeforeURLChanges = () => {
 		const urlChangeEvent = new UrlChangeEvent(EVENTS[popState]);
 		setLastURLChangeEvent(urlChangeEvent);
 		dispatchEvent(urlChangeEvent);
-	}, {
-		once: true 
-	})
+	};
+	window.addEventListener(popState, popStateCb, false)
 
 	window.addEventListener(beforeunload, (e) => {
 		const event = new BeforeUrlChangeEvent(
