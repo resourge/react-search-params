@@ -1,3 +1,10 @@
+## [1.8.2](https://github.com/resourge/react-search-params/compare/v1.8.1...v1.8.2) (2023-02-28)
+
+
+### Bug Fixes
+
+* **events:** update url from window to method ([d446f17](https://github.com/resourge/react-search-params/commit/d446f17352cc74dcd9dd0b73ccb0c6e727a3d94d))
+
 ## [1.8.1](https://github.com/resourge/react-search-params/compare/v1.8.0...v1.8.1) (2023-02-28)
 
 
