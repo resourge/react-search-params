@@ -1,26 +1,12 @@
 /// <reference types="vitest" />
 
 import react from '@vitejs/plugin-react'
-import { defineConfig } from 'vite'
-import checker from 'vite-plugin-checker';
-import tsconfigPaths from 'vite-tsconfig-paths'
+
+import { defineLibConfig } from './config/defineLibConfig';
 
 // https://vitejs.dev/config/
-export default defineConfig({
-	test: {
-		globals: true,
-		environment: 'jsdom',
-		setupFiles: './src/setupTests.ts'
-	},
+export default defineLibConfig(() => ({
 	plugins: [
-		react(),
-		tsconfigPaths(),
-		checker({ 
-			typescript: true,
-			enableBuild: true,
-			eslint: {
-				lintCommand: 'eslint "./src/**/*.{ts,tsx}"'
-			}
-		})
+		react()
 	]
-})
+}))

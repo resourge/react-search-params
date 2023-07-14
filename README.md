@@ -26,19 +26,7 @@ or NPM:
 npm install @resourge/react-search-params --save
 ```
 
-## Usage
-
-```Typescript
-const [params, setParams] = useSearchParams(
-  // Method to control navigation
-  ({ url }) => window.history.replaceState(null, '', url.href),
-  // Ex: react-router ({ url }) => history.replace(url.href),
-  { }, // default params
-  { } // config
-)
-```
-
-## Quickstart
+## Basic usage
 
 ```jsx
 import React from 'react';
@@ -60,7 +48,21 @@ export default function Form() {
 }
 ```
 
-### Config
+## Documentation
+
+### useSearchParams
+
+```Typescript
+const [params, setParams] = useSearchParams(
+  // Method to control navigation
+  ({ url }) => window.history.replaceState(null, '', url.href),
+  // Ex: react-router ({ url }) => history.replace(url.href),
+  { }, // default params
+  { } // config
+)
+```
+
+#### Config
 
 | Name | Type | Required | Description |
 | ---- | ---- | -------- | ----------- |
@@ -68,7 +70,7 @@ export default function Form() {
 | **defaultParams** | `object` | false | To define default values |
 | **config** | `{ hash?: boolean }` | false | When hash is true it will use `URL hash` instead of `URL` to get `search` |
 
-## useUrl
+### useUrl
 
 Returns the current URL object.
 
@@ -76,9 +78,9 @@ Returns the current URL object.
 const url = useUrl();
 ```
 
-## Methods
+### Methods
 
-### parseParams
+#### parseParams
 
 Params object into search path
 
@@ -92,7 +94,23 @@ parseParams({
 // ?productId=10&productName=Apple
 ```
 
-### parseSearch
+#### parseSearchParams
+
+Convert search params into true primitive values.
+
+```jsx
+import { parseSearchParams } from '@resourge/react-search-params';
+
+const searchParams = new URLSearchParams();
+searchParams.set('productId', String(10))
+
+const obj = parseSearchParams(searchParams)
+// {
+//   productId: 10
+// }
+```
+
+#### parseSearch
 
 Converts search string into object.
 

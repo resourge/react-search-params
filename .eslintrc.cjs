@@ -10,7 +10,7 @@ module.exports = {
 		'standard-with-typescript',
 		'react-app'
 	],
-	ignorePatterns: ['**/dist/*', './main.js'],
+	ignorePatterns: ['**/dist/*', './main.js', './src/lib_old/**/*', '*/examples/**/*'],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
 		project: './tsconfig.json',
@@ -34,7 +34,13 @@ module.exports = {
 			}
 		},
 		{
-			files: ['vite.config.ts', './scripts/assetManifest.ts'], // Your TypeScript files extension
+			files: ['./config/**/*.ts'], // Your TypeScript files extension
+			parserOptions: {
+				project: ['./tsconfig.node.json'] // Specify it only for TypeScript files
+			}
+		},
+		{
+			files: ['vite.config.ts'], // Your TypeScript files extension
 			parserOptions: {
 				project: ['./tsconfig.node.json'] // Specify it only for TypeScript files
 			}
@@ -79,7 +85,7 @@ module.exports = {
 		],
 		'react/no-unstable-nested-components': 0,
 		'newline-per-chained-call': ['error', {
-			ignoreChainWithDepth: 1
+			ignoreChainWithDepth: 5
 		}],
 		'object-property-newline': ['error', {
 			allowAllPropertiesOnSameLine: false

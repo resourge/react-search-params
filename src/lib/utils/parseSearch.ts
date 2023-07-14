@@ -82,7 +82,7 @@ function createNestedObject (
 }
 
 /**
- * Convert search params into an true primitive values.
+ * Convert search params into true primitive values.
  * @param searchParams {@link URLSearchParams}
  * @param defaultParams 
  * @returns {Record<string, any>}
