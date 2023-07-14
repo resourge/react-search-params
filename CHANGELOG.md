@@ -1,3 +1,15 @@
+# [1.9.0](https://github.com/resourge/react-search-params/compare/v1.8.2...v1.9.0) (2023-07-14)
+
+
+### Bug Fixes
+
+* **initiatenavigationevents:** fix variavel not being right ([5621d08](https://github.com/resourge/react-search-params/commit/5621d08433aeeb076e675486b200610d2d046a03))
+
+
+### Features
+
+* **project:** update project and build system to better match current versions ([6fee753](https://github.com/resourge/react-search-params/commit/6fee7536a08114cee59abcea179dd7c39b889578))
+
 ## [1.8.2](https://github.com/resourge/react-search-params/compare/v1.8.1...v1.8.2) (2023-02-28)
 
 
