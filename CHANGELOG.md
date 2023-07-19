@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/resourge/react-search-params/compare/v1.9.0...v1.9.1) (2023-07-19)
+
+
+### Bug Fixes
+
+* **project:** add extension to all file imports ([db389e6](https://github.com/resourge/react-search-params/commit/db389e6151a7886e7dd8bce053e16ffb9247cbab))
+
 # [1.9.0](https://github.com/resourge/react-search-params/compare/v1.8.2...v1.9.0) (2023-07-14)
 
 
