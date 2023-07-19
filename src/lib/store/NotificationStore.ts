@@ -1,5 +1,5 @@
-import { type UrlChangeEvent } from '../utils';
-import { type ActionType, EVENTS } from '../utils/navigationEvents/Events';
+import { type UrlChangeEvent } from '../utils/index.ts';
+import { type ActionType, EVENTS } from '../utils/navigationEvents/Events.ts';
 
 export type StoreValue = { 
 	action: ActionType

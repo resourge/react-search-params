@@ -21,7 +21,8 @@ const globals: Record<string, string> = {
 	react: 'React',
 	'react-dom': 'ReactDOM',
 	'@resourge/shallow-clone': 'ResourceShallowClone',
-	'use-sync-external-store/shim': 'ReactUseSyncExternalStore'
+	'use-sync-external-store/shim': 'ReactUseSyncExternalStore',
+	'use-sync-external-store/shim/index.js': 'ReactUseSyncExternalStore'
 }
 
 const globalsKeys = Object.keys(globals);
@@ -31,7 +32,8 @@ const external = [
 	...Object.keys(peerDependencies),
 	...Object.keys(dependencies),
 	...Object.keys(devDependencies),
-	'use-sync-external-store/shim'
+	'use-sync-external-store/shim',
+	'use-sync-external-store/shim/index.js'
 ]
 const packagesNames = packages.map((pack) => pack.name);
 

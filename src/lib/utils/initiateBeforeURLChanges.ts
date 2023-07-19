@@ -14,7 +14,7 @@ import {
 	getLastURLChangeEvent,
 	EVENTS_KEYS,
 	beforeunload
-} from './navigationEvents/Events'
+} from './navigationEvents/Events.ts'
 
 /**
  * Checks is data from '(push/replace)State' has action key

@@ -1,10 +1,10 @@
-import { getAction, initiateBeforeURLChanges } from './initiateBeforeURLChanges';
+import { getAction, initiateBeforeURLChanges } from './initiateBeforeURLChanges.ts';
 import {
 	pushState,
 	replaceState,
 	setLastURLChangeEvent,
 	UrlChangeEvent
-} from './navigationEvents/Events'
+} from './navigationEvents/Events.ts'
 
 /**
  * Initiate some event's to catch {@link URL} changes.
