@@ -1,3 +1,10 @@
+## [1.9.2](https://github.com/resourge/react-search-params/compare/v1.9.1...v1.9.2) (2023-08-08)
+
+
+### Bug Fixes
+
+* **globalevents:** add eventlistener types ([e435781](https://github.com/resourge/react-search-params/commit/e435781ded724f8f9669c96a9e15de2ada9dd15f))
+
 ## [1.9.1](https://github.com/resourge/react-search-params/compare/v1.9.0...v1.9.1) (2023-07-19)
 
 
