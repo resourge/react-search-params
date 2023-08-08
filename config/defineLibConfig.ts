@@ -64,7 +64,7 @@ export const defineLibConfig = (
 				formats: ['cjs', 'es', 'umd']
 			},
 			outDir: './dist',
-			rollupOptions: {
+			rollupOptions: {				
 				output: {
 					dir: './dist',
 					globals: external.filter((key) => globalsKeys.includes(key))
