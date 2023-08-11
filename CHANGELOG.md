@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/resourge/react-search-params/compare/v1.9.2...v1.10.0) (2023-08-11)
+
+
+### Features
+
+* **useurl:** add previous value (previous url) ([aa99715](https://github.com/resourge/react-search-params/commit/aa997156c6327403733c16b827b6c5dfd6831c58))
+
 ## [1.9.2](https://github.com/resourge/react-search-params/compare/v1.9.1...v1.9.2) (2023-08-08)
 
 
