@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/resourge/react-search-params/compare/v1.10.0...v1.11.0) (2023-09-06)
+
+
+### Features
+
+* **usesearchparams:** add filterKeys to filter keys from changing params reference ([4976d56](https://github.com/resourge/react-search-params/commit/4976d564221ba1f5666a0e5f50c98bd09ff61373))
+
 # [1.10.0](https://github.com/resourge/react-search-params/compare/v1.9.2...v1.10.0) (2023-08-11)
 
 
