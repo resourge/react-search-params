@@ -16,16 +16,32 @@ export type SearchParams<T extends Record<string, any> = Record<string, any>> = 
 	url: URL
 }
 
-export type SearchConfig = {
+export type SearchConfig<T extends Record<string, any>> = {
+	filterKeys?: Array<keyof T> 
 	/**
 	 * Uses {@link URL#search} from `hash`
 	 * Create a {@link URL} from `hash`
 	 * then uses it search
 	 */
-	hash?: boolean 
+	hash?: boolean
 }
 
 export type SearchNavigate = <T extends Record<string, any> = Record<string, any>>(config: SearchParams<T>) => void
+
+function getSearchDep<T extends Record<string, any>>(
+	search: string, 
+	searchParams: URLSearchParams,
+	filterKeys?: Array<keyof T>
+) {
+	if ( filterKeys ) {
+		const newSearchParams = new URLSearchParams(searchParams);
+		filterKeys.forEach((key) => {
+			newSearchParams.delete(key as string);
+		})
+		return newSearchParams.toString()
+	}
+	return search;
+}
 
 /**
  * Returns a {@link SearchParams}, and a method to update the params.
@@ -36,7 +52,7 @@ export type SearchNavigate = <T extends Record<string, any> = Record<string, any
 export const useSearchParams = <T extends Record<string, any>>(
 	navigate: SearchNavigate,
 	defaultParams?: T,
-	config?: SearchConfig
+	config?: SearchConfig<T>
 ): [SearchParams<T>, (newParams: T) => void] => {
 	const [url] = useUrl();
 
@@ -55,8 +71,13 @@ export const useSearchParams = <T extends Record<string, any>>(
 		searchParams = hashUrl.searchParams;
 	}
 
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	const params = useMemo(() => parseSearchParams<T>(searchParams, defaultParams), [search]);
+	const searchDep = getSearchDep(search, searchParams, config?.filterKeys);
+	
+	const params = useMemo(
+		() => parseSearchParams<T>(searchParams, defaultParams), 
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		[searchDep]
+	);
 
 	const state: SearchParams<T> = {
 		params,
