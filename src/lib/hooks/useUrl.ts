@@ -8,7 +8,7 @@ import { initiateNavigationEvents } from '../utils/initiateNavigationEvents';
 
 // Checks if "resourge_history" was already initiated
 // This is to prevent "resourge_history" from being initiated multiple times
-if ( !window.resourge_history ) {
+if ( globalThis.window && !window.resourge_history ) {
 	initiateNavigationEvents();
 }
 

@@ -13,12 +13,16 @@ export type StoreValue = [
 class NotificationStore {
 	public notification = new Set<() => void>();
 
-	private value: StoreValue = [
-		new URL(window.location.href), 
-		EVENTS.initial
-	];
+	private value: StoreValue = [] as unknown as StoreValue;
 
 	constructor() {
+		if ( !globalThis.window ) {
+			return;
+		}
+		this.value = [
+			new URL(window.location.href), 
+			EVENTS.initial
+		]
 		window.addEventListener('URLChange', (event: UrlChangeEvent) => {
 			const { url, action } = event;
 			const previousValue = this.value;
