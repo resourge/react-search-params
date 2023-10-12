@@ -1,3 +1,10 @@
+## [1.11.1](https://github.com/resourge/react-search-params/compare/v1.11.0...v1.11.1) (2023-10-12)
+
+
+### Bug Fixes
+
+* **node:** hide all windows to prevent error on node ([bd96275](https://github.com/resourge/react-search-params/commit/bd9627575aad4e2869fd4299e5a5167711157efc))
+
 # [1.11.0](https://github.com/resourge/react-search-params/compare/v1.10.0...v1.11.0) (2023-09-06)
 
 
