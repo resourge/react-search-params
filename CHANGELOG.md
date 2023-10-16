@@ -1,3 +1,10 @@
+## [1.11.2](https://github.com/resourge/react-search-params/compare/v1.11.1...v1.11.2) (2023-10-16)
+
+
+### Bug Fixes
+
+* **notificationstore:** prevent mutation from reference ([186b8f5](https://github.com/resourge/react-search-params/commit/186b8f5dc13ceeb3ff0e622bed9e009e2b03de52))
+
 ## [1.11.1](https://github.com/resourge/react-search-params/compare/v1.11.0...v1.11.1) (2023-10-12)
 
 
