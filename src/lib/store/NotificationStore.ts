@@ -55,6 +55,10 @@ class NotificationStore {
 	}
 
 	public getValue() {
+		this.value[0] = new URL(this.value[0]);
+		if ( this.value[2] ) {
+			this.value[2][0] = new URL(this.value[2][0])
+		}
 		return this.value
 	}
 }
