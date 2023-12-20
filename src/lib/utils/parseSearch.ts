@@ -1,4 +1,10 @@
 /**
+ * Check if value is a valid date
+ */
+function isValidDate(value: any): boolean {
+	return value instanceof Date && !isNaN(value as any);
+}
+/**
  * Checks if param value is date
  * @param paramValue {string}
  * @returns {boolean}
@@ -6,7 +12,7 @@
 function isIsoDate(paramValue: string): boolean {
 	if (!/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z/.test(paramValue)) return false;
 	const d = new Date(paramValue); 
-	return d.toISOString() === paramValue;
+	return isValidDate(d) && d.toISOString() === paramValue;
 }
 
 /**
