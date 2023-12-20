@@ -1,3 +1,10 @@
+## [1.11.3](https://github.com/resourge/react-search-params/compare/v1.11.2...v1.11.3) (2023-12-20)
+
+
+### Bug Fixes
+
+* **parsesearch:** fix isIsoDate not working in some cases ([835603e](https://github.com/resourge/react-search-params/commit/835603e80108f8c16b2f178def3f87d624b19941))
+
 ## [1.11.2](https://github.com/resourge/react-search-params/compare/v1.11.1...v1.11.2) (2023-10-16)
 
 
