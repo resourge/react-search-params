@@ -1,3 +1,10 @@
+## [1.11.4](https://github.com/resourge/react-search-params/compare/v1.11.3...v1.11.4) (2024-06-11)
+
+
+### Bug Fixes
+
+* **package.json:** fix main ([9f2adca](https://github.com/resourge/react-search-params/commit/9f2adcaa9a1b53ff5dc2e3702fec5d1056534c33))
+
 ## [1.11.3](https://github.com/resourge/react-search-params/compare/v1.11.2...v1.11.3) (2023-12-20)
 
 
