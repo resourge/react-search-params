@@ -1,7 +1,10 @@
 /* eslint-disable no-restricted-globals */
-import { useCallback, useEffect, useRef } from 'react';
-
-import { useSyncExternalStore } from 'use-sync-external-store/shim/index.js';
+import {
+	useCallback,
+	useEffect,
+	useRef,
+	useSyncExternalStore
+} from 'react'
 
 import NotificationStore, { type StoreValue } from '../store/NotificationStore';
 import { initiateNavigationEvents } from '../utils/initiateNavigationEvents';

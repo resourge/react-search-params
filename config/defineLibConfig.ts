@@ -61,10 +61,11 @@ export const defineLibConfig = (
 				entry: entryLib,
 				name: 'index',
 				fileName: 'index',
-				formats: ['cjs', 'es', 'umd']
+				formats: ['es']
 			},
+			sourcemap: true,
 			outDir: './dist',
-			rollupOptions: {				
+			rollupOptions: {		
 				output: {
 					dir: './dist',
 					globals: external.filter((key) => globalsKeys.includes(key))
@@ -72,7 +73,10 @@ export const defineLibConfig = (
 						obj[key] = globals[key];
 						return obj
 					}, {}),
-					sourcemap: true
+					inlineDynamicImports: false,
+					preserveModules: true,
+					entryFileNames: '[name].js',
+					chunkFileNames: (chunkInfo) => chunkInfo.name.split('lib/')[1]
 				},
 				external
 			}
@@ -99,7 +103,6 @@ export const defineLibConfig = (
 			}),
 			dts({
 				insertTypesEntry: true,
-				rollupTypes: true,
 
 				bundledPackages: packagesNames,
 				compilerOptions: {
