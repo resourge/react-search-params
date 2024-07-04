@@ -20,9 +20,7 @@ const globals: Record<string, string> = {
 	'react/jsx-runtime': 'ReactJsxRuntime',
 	react: 'React',
 	'react-dom': 'ReactDOM',
-	'@resourge/shallow-clone': 'ResourceShallowClone',
-	'use-sync-external-store/shim': 'ReactUseSyncExternalStore',
-	'use-sync-external-store/shim/index.js': 'ReactUseSyncExternalStore'
+	'@resourge/shallow-clone': 'ResourceShallowClone'
 }
 
 const globalsKeys = Object.keys(globals);
@@ -31,9 +29,7 @@ const external = [
 	'react/jsx-runtime',
 	...Object.keys(peerDependencies),
 	...Object.keys(dependencies),
-	...Object.keys(devDependencies),
-	'use-sync-external-store/shim',
-	'use-sync-external-store/shim/index.js'
+	...Object.keys(devDependencies)
 ]
 const packagesNames = packages.map((pack) => pack.name);
 
