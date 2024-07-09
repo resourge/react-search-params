@@ -19,8 +19,7 @@ const globals: Record<string, string> = {
 	vue: 'Vue',
 	'react/jsx-runtime': 'ReactJsxRuntime',
 	react: 'React',
-	'react-dom': 'ReactDOM',
-	'@resourge/shallow-clone': 'ResourceShallowClone'
+	'react-dom': 'ReactDOM'
 }
 
 const globalsKeys = Object.keys(globals);

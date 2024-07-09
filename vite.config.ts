@@ -10,16 +10,13 @@ export default defineLibConfig(
 	() => ({
 		plugins: [
 			react()
-		
 		]
 	}),
 	() => {
 		const indexDFilepath = './dist/index.d.ts';
 		const content = fs.readFileSync(indexDFilepath, 'utf-8');
-		const globalEventsContent = fs.readFileSync('./src/lib/utils/navigationEvents/GlobalEvents.ts', 'utf-8');
+		const globalEventsContent = fs.readFileSync('./src/lib/GlobalEvents.ts', 'utf-8');
 
-		const index = globalEventsContent.indexOf('declare global')
-
-		fs.writeFileSync(indexDFilepath, `${content}${globalEventsContent.substring(index)}`, 'utf-8');
+		fs.writeFileSync(indexDFilepath, `${content}${globalEventsContent}`, 'utf-8');
 	}
 )
