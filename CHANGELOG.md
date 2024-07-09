@@ -1,3 +1,10 @@
+## [1.12.1](https://github.com/resourge/react-search-params/compare/v1.12.0...v1.12.1) (2024-07-09)
+
+
+### Bug Fixes
+
+* **index.d.ts:** fix index.d.ts global not working as intended ([66e2f80](https://github.com/resourge/react-search-params/commit/66e2f8071293a2c4128285adcf6d885659b892d7))
+
 # [1.12.0](https://github.com/resourge/react-search-params/compare/v1.11.4...v1.12.0) (2024-06-21)
 
 
