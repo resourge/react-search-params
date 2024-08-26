@@ -1,3 +1,10 @@
+## [1.12.2](https://github.com/resourge/react-search-params/compare/v1.12.1...v1.12.2) (2024-08-26)
+
+
+### Performance Improvements
+
+* **usesearchparams:** simplify sintaxe ([ef348da](https://github.com/resourge/react-search-params/commit/ef348dae63db2c576dbc59a087f9e5666fe6191c))
+
 ## [1.12.1](https://github.com/resourge/react-search-params/compare/v1.12.0...v1.12.1) (2024-07-09)
 
 
