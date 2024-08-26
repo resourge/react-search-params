@@ -42,8 +42,11 @@ function decoder(paramValue: any) {
 	else if ( paramValue === 'false' ) {
 		return false;
 	}
-	else if ( isIsoDate(unescape(paramValue)) ) {
-		return new Date(unescape(paramValue));
+	else {
+		const decodedValue = decodeURI(paramValue);
+		if ( isIsoDate(decodedValue) ) {
+			return new Date(decodedValue);
+		}
 	}
 
 	return paramValue;

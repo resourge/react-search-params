@@ -17,7 +17,7 @@ export type SearchParams<T extends Record<string, any> = Record<string, any>> = 
 }
 
 export type SearchConfig<T extends Record<string, any>> = {
-	filterKeys?: Array<keyof T> 
+	defaultParams?: T
 	/**
 	 * Uses {@link URL#search} from `hash`
 	 * Create a {@link URL} from `hash`
@@ -28,21 +28,6 @@ export type SearchConfig<T extends Record<string, any>> = {
 
 export type SearchNavigate = <T extends Record<string, any> = Record<string, any>>(config: SearchParams<T>) => void
 
-function getSearchDep<T extends Record<string, any>>(
-	search: string, 
-	searchParams: URLSearchParams,
-	filterKeys?: Array<keyof T>
-) {
-	if ( filterKeys ) {
-		const newSearchParams = new URLSearchParams(searchParams);
-		filterKeys.forEach((key) => {
-			newSearchParams.delete(key as string);
-		})
-		return newSearchParams.toString()
-	}
-	return search;
-}
-
 /**
  * Returns a {@link SearchParams}, and a method to update the params.
  * @param navigate - method to trigger navigation
@@ -51,17 +36,16 @@ function getSearchDep<T extends Record<string, any>>(
  */
 export const useSearchParams = <T extends Record<string, any>>(
 	navigate: SearchNavigate,
-	defaultParams?: T,
-	config?: SearchConfig<T>
+	config: SearchConfig<T> = {
+		hash: false 
+	}
 ): [SearchParams<T>, (newParams: T) => void] => {
 	const [url] = useUrl();
-
-	const hash = config?.hash;
 
 	let search: string = url.search;
 	let searchParams: URLSearchParams = url.searchParams
 
-	if ( config?.hash ) {
+	if ( config.hash ) {
 		const hashUrl: URL = new URL(
 			url.hash.substring(1, url.hash.length), 
 			window.location.origin
@@ -71,12 +55,10 @@ export const useSearchParams = <T extends Record<string, any>>(
 		searchParams = hashUrl.searchParams;
 	}
 
-	const searchDep = getSearchDep(search, searchParams, config?.filterKeys);
-	
 	const params = useMemo(
-		() => parseSearchParams<T>(searchParams, defaultParams), 
+		() => parseSearchParams<T>(searchParams, config.defaultParams), 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[searchDep]
+		[search]
 	);
 
 	const state: SearchParams<T> = {
@@ -91,7 +73,7 @@ export const useSearchParams = <T extends Record<string, any>>(
 			const newURL = createNewUrlWithSearch(
 				url,
 				newSearch,
-				hash
+				config.hash
 			);
 
 			navigate({

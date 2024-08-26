@@ -24,6 +24,10 @@ function _parseParams (
 	urlParams = new URLSearchParams(),
 	previousKey = ''
 ) {
+	if ( toIgnore(state) ) {
+		return urlParams;
+	}
+
 	if ( isObject(state) ) {
 		Object.keys(state)
 		.forEach((_key) => {
@@ -34,15 +38,12 @@ function _parseParams (
 		})
 		return urlParams;
 	}
+	
 	if ( Array.isArray(state) ) {
 		state.forEach((value, index) => {
 			const key = `${previousKey ? `${previousKey}` : ''}[${index}]`
 			urlParams = _parseParams(value, urlParams, key);
 		})
-		return urlParams;
-	}
-
-	if ( toIgnore(state) ) {
 		return urlParams;
 	}
 

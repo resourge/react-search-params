@@ -23,19 +23,17 @@ class NotificationStore {
 			new URL(window.location.href), 
 			EVENTS.initial
 		]
-		window.addEventListener('URLChange', (event: UrlChangeEvent) => {
-			const { url, action } = event;
-			const previousValue = this.value;
+		window.addEventListener('URLChange', ({ url, action }: UrlChangeEvent) => {
 			if ( 
-				previousValue[0].href !== url.href ||
+				this.value[0].href !== url.href ||
 				this.value[1] !== action
 			) {
 				this.value = [
 					url,
 					action,
 					[
-						previousValue[0],
-						previousValue[1]
+						this.value[0],
+						this.value[1]
 					]
 				];
 

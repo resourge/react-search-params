@@ -22,10 +22,8 @@ if ( globalThis.window && !window.resourge_history ) {
 export const useUrl = (): StoreValue => {
 	// This is because URLChange trigger before useSyncExternalStore `unsubscribe`
 	const unsubscribeRef = useRef(() => {})
-	useEffect(() => {
-		return () => {
-			unsubscribeRef.current()
-		}
+	useEffect(() => () => {
+		unsubscribeRef.current(); 
 	}, [])
 	return useSyncExternalStore(
 		useCallback((notification) => {
