@@ -4,8 +4,6 @@ import { GithubReporter } from 'vitest-github-action';
 export default defineConfig({
 	test: {
 		name: 'browser',
-		include: ['**\/src/lib/**'],
-		exclude: ['**\/config/**'],
 		coverage: {
 			provider: 'istanbul',
 			exclude: ['**\/config/**/*', '*.config.ts', '**\/src/*', '**\/.*'] 
