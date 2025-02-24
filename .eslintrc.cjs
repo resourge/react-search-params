@@ -40,18 +40,9 @@ module.exports = {
 			}
 		},
 		{
-			files: ['vite.config.ts'], // Your TypeScript files extension
+			files: ['vite.config.ts', 'vitest.config.ts'], // Your TypeScript files extension
 			parserOptions: {
 				project: ['./tsconfig.node.json'] // Specify it only for TypeScript files
-			}
-		},
-		{
-			files: ['*.test.*'], // Your TypeScript files extension
-			extends: [
-				'plugin:testing-library/react'
-			],
-			rules: {
-				'testing-library/prefer-presence-queries': 'off'
 			}
 		}
 	],

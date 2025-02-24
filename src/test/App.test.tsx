@@ -1,14 +1,12 @@
-import { render, screen } from '@testing-library/react'
+import { expect, it } from 'vitest'
+import { render } from 'vitest-browser-react'
 
-import App from 'src/App'
+import App from '../App'
 
-it('App', () => {
-	render(
-		<App />
-	)
-	
-	expect(screen.getByText('App'))
-	.toBeInTheDocument()
+it('App', async () => {
+	const screen = render(<App />)
+
+	await expect.element(screen.getByText('App')).toBeInTheDocument()
 })
 
 /*
