@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/resourge/react-search-params/compare/v1.12.2...v1.13.0) (2025-02-24)
+
+
+### Features
+
+* **native:** add separation from react and react-native ([1124267](https://github.com/resourge/react-search-params/commit/1124267c5480e644e8963e182c2d962dd41c94d5))
+
 ## [1.12.2](https://github.com/resourge/react-search-params/compare/v1.12.1...v1.12.2) (2024-08-26)
 
 
