@@ -6,7 +6,7 @@ import {
 	useSyncExternalStore
 } from 'react'
 
-import { HistoryStore, type StoreValue } from '@resourge/history-store';
+import { HistoryStore, type StoreValue } from '@resourge/history-store/mobile';
 
 /**
  * Returns the current {@link URL} object.

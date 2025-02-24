@@ -1,3 +1,3 @@
 export {
 	type SearchConfig, type SearchParams, useSearchParams, useUrl
-} from './hooks/index';
+} from './hooks/index.native';

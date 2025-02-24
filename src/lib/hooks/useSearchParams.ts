@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 
-import { parseParams, parseSearchParams } from '../utils';
-import { createNewUrlWithSearch } from '../utils/createNewUrlWithSearch';
+import { createNewUrlWithSearch, parseParams, parseSearchParams } from '@resourge/history-store/utils';
 
 import { useUrl } from './useUrl';
 

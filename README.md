@@ -1,6 +1,6 @@
-# React-search-params
+# @resourge/react-search-params
 
-`react-search-params` is a simple hook to control current url. Also provides some methods that extend URLSearchParams.
+`@resourge/react-search-params` is a simple hook to control current url. Also provides some methods that extend URLSearchParams.
 
 ## Features
 
@@ -8,8 +8,6 @@
 - Has no dependencies. 
 - It uses javascript URLSearchParams to parse search.
 - Decodes search params into primitive values. (ex: "?productId=10&productName=Apple" will become { product: 10, productName: "Apple" }).
-- `react-search-params` doesn't do navigation by itself. This gives the developer the control or the ability to use it's own navigation system. see more in [Usage](##usage)
-- [parseParams](###), [parseSearch](###parseSearch) method's that extend URLSearchParams
 
 
 ## Installation
@@ -76,52 +74,6 @@ Returns the current URL object.
 
 ```Typescript
 const url = useUrl();
-```
-
-### Methods
-
-#### parseParams
-
-Params object into search path
-
-```jsx
-import { parseParams } from '@resourge/react-search-params';
-
-parseParams({
-  productId: 10,
-  productName: 'Apple'
-})
-// ?productId=10&productName=Apple
-```
-
-#### parseSearchParams
-
-Convert search params into true primitive values.
-
-```jsx
-import { parseSearchParams } from '@resourge/react-search-params';
-
-const searchParams = new URLSearchParams();
-searchParams.set('productId', String(10))
-
-const obj = parseSearchParams(searchParams)
-// {
-//   productId: 10
-// }
-```
-
-#### parseSearch
-
-Converts search string into object.
-
-```jsx
-import { parseSearch } from '@resourge/react-search-params';
-
-parseSearch('?productId=10&productName=Apple')
-// {
-//   productId: 10,
-//   productName: 'Apple'
-// }
 ```
 
 ## License
