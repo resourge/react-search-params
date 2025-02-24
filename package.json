@@ -55,7 +55,7 @@
 		"build": "tsc && vite build",
 		"test": "vitest run --browser.headless",
 		"test:watch": "vitest",
-		"coverage": "vitest run --coverage",
+		"coverage": "vitest run --coverage --browser.headless",
 		"semantic-release": "semantic-release"
 	},
 	"peerDependencies": {
